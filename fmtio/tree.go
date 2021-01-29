@@ -1,4 +1,4 @@
-package fmt_io
+package fmtio
 
 import (
 	"fmt"
@@ -24,7 +24,7 @@ func (data Tree) print(root string, cb func(string) string, file *os.File) (err 
 			err = x.(error)
 		}
 	}()
-	//fmt_io := make([]string, 0, 40960)
+	//tree := make([]string, 0, 40960)
 	var f func(_, _, _, _ string)
 	f = func(parent, prefix, add, node string) {
 		var children = data.Children(parent)
@@ -39,7 +39,7 @@ func (data Tree) print(root string, cb func(string) string, file *os.File) (err 
 				}
 			}
 		}
-		//fmt_io = append(fmt_io, fmt.Sprintf("%s%s%s%s", prefix, node, parent, extra))
+		//tree = append(tree, fmt.Sprintf("%s%s%s%s", prefix, node, parent, extra))
 		if _, err := fmt.Fprintf(file, "%s%s%s%s\n", prefix, node, parent, extra); err != nil {
 			panic(err)
 		}
@@ -55,7 +55,7 @@ func (data Tree) print(root string, cb func(string) string, file *os.File) (err 
 		}
 	}
 	f(root, "", "", "")
-	//for _, line := range fmt_io {
+	//for _, line := range tree {
 	//	fmt.Println(line)
 	//}
 	return

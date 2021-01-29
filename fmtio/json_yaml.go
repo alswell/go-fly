@@ -1,4 +1,4 @@
-package fmt_io
+package fmtio
 
 import (
 	"encoding/json"
